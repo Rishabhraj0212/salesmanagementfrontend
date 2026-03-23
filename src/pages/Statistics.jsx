@@ -21,10 +21,11 @@ const Statistics = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [statsRes, chartRes, dashRes] = await Promise.all([
+        const [statsRes, chartRes, dashRes, profileRes] = await Promise.all([
           API.get('/dashboard/stats'),
           API.get('/dashboard/chart'),
-          API.get('/dashboard')
+          API.get('/dashboard'),
+          API.get('/settings/profile').catch(() => null)
         ]);
         setStatsData(statsRes.data);
         
@@ -37,12 +38,9 @@ const Statistics = () => {
         setChartData(chartRes.data);
 
         // Load saved layout
-        try {
-          const profileRes = await API.get('/settings/profile');
-          if (profileRes.data.cardLayout?.length === 3) {
-            setCardOrder(profileRes.data.cardLayout);
-          }
-        } catch (e) {}
+        if (profileRes && profileRes.data && profileRes.data.cardLayout?.length === 3) {
+          setCardOrder(profileRes.data.cardLayout);
+        }
       } catch (err) {
         console.error(err);
       } finally {
