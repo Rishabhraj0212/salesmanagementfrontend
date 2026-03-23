@@ -1,0 +1,177 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: 3fr 1.2fr;
+  grid-template-areas: 
+    "sales inventory"
+    "purchase product"
+    "chart topProducts";
+  gap: 24px;
+  padding: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.card h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #383A47;
+  margin-bottom: 24px;
+}
+
+/* Specific Grid Placements */
+.salesCard { grid-area: sales; }
+.inventoryCard { grid-area: inventory; }
+.purchaseCard { grid-area: purchase; }
+.productCard { grid-area: product; }
+.chartCard { grid-area: chart; }
+.topProductsCard { grid-area: topProducts; }
+
+.metricsRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.metricItem {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex: 1;
+}
+
+.metricIcon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.metricData {
+  display: flex;
+  flex-direction: column;
+}
+
+.metricValue {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A1C21;
+}
+
+.metricLabel {
+  font-size: 13px;
+  color: #8B8D97;
+  font-weight: 500;
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.chartHeader h3 { margin-bottom: 0; }
+
+.chartFilter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1.5px solid #E0E2E7;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #8B8D97;
+}
+
+.topProductsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.topProductItem {
+  padding: 16px 0;
+  border-bottom: 1px solid #F0F1F3;
+}
+
+.topProductItem:last-child {
+  border-bottom: none;
+}
+
+.topProductItem:first-child {
+  padding-top: 0;
+}
+
+.productName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1A1C21;
+  margin-bottom: 4px;
+}
+
+/* Tooltip custom styling */
+.customTooltip {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #E0E2E7;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 1200px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "sales"
+      "inventory"
+      "purchase"
+      "product"
+      "chart"
+      "topProducts";
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .card h3 {
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+
+  .metricsRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .metricItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .metricIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .metricValue {
+    font-size: 14px;
+  }
+
+  .metricLabel {
+    font-size: 12px;
+  }
+}
+

@@ -1,0 +1,114 @@
+.settingsPage {
+  padding: 24px;
+}
+
+.settingsCard {
+  background: #fff;
+  border-radius: 4px; /* Flatter according to screenshot */
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  border: 1px solid #E0E2E7;
+  min-height: 500px;
+  position: relative;
+}
+
+.headerContainer {
+  border-bottom: 1.5px solid #F0F1F3;
+  margin-bottom: 32px;
+  display: flex;
+}
+
+.settingsCard h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A1C21;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #333;
+  margin: 0;
+  margin-bottom: -1.5px; /* Alignment with parent border */
+}
+
+.formGroup {
+  margin-bottom: 24px;
+  max-width: 500px;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #8B8D97;
+  margin-bottom: 8px;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #D0D2D7;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #1A1C21;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.formGroup input:focus {
+  border-color: #5570F1;
+}
+
+.formGroup input:disabled {
+  background: #fff; /* Still white in screenshot, but non-editable */
+  color: #1A1C21;
+}
+
+.formActions {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+}
+
+.saveBtn {
+  padding: 12px 64px;
+  background: #2B2F42;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.saveBtn:hover { background: #1A1C21; }
+.saveBtn:disabled { opacity: 0.6; }
+
+.errorMsg {
+  color: #E53935;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.successMsg {
+  color: #2F855A;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .settingsCard {
+    padding: 24px;
+    min-height: auto;
+    padding-bottom: 80px;
+  }
+  
+  .formActions {
+    bottom: 24px;
+    right: 24px;
+  }
+  
+  .saveBtn {
+    padding: 12px 32px;
+    width: 100%;
+  }
+}
+

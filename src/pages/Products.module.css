@@ -1,0 +1,778 @@
+.productsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1.5px solid #E0E2E7;
+  border-radius: 8px;
+  padding: 0 14px;
+  flex: 1;
+  max-width: 400px;
+}
+
+.searchBox input {
+  border: none;
+  outline: none;
+  padding: 10px 8px;
+  font-size: 14px;
+  width: 100%;
+  background: transparent;
+}
+
+.searchIcon {
+  color: #8B8D97;
+  font-size: 16px;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #5570F1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.addBtn:hover {
+  background: #4460E0;
+}
+
+.tableContainer {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  padding: 14px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #8B8D97;
+  background: #F9F9FC;
+  border-bottom: 1px solid #E0E2E7;
+}
+
+.table td {
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #1A1C21;
+  border-bottom: 1px solid #F0F0F3;
+  vertical-align: middle;
+}
+
+.table tr:hover {
+  background: #FAFAFC;
+  cursor: pointer;
+}
+
+.productImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #F5F7FA;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.statusInStock {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.statusLowStock {
+  background: #FFF3E0;
+  color: #E65100;
+}
+
+.statusOutOfStock {
+  background: #FFEBEE;
+  color: #C62828;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+}
+
+.pageBtn {
+  padding: 6px 12px;
+  border: 1px solid #E0E2E7;
+  border-radius: 6px;
+  background: #fff;
+  color: #1A1C21;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pageBtn:hover { background: #F5F7FA; }
+.pageBtn.active { background: #5570F1; color: #fff; border-color: #5570F1; }
+.pageBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Buy Modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  width: 440px;
+  max-width: 90vw;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.modal h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A1C21;
+  margin-bottom: 8px;
+}
+
+.modal p {
+  font-size: 13px;
+  color: #8B8D97;
+  margin-bottom: 20px;
+}
+
+.modalFormGroup {
+  margin-bottom: 16px;
+}
+
+.modalFormGroup label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A1C21;
+  margin-bottom: 6px;
+}
+
+.modalFormGroup input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #E0E2E7;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.modalFormGroup input:focus { border-color: #5570F1; }
+
+.modalActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.cancelBtn {
+  padding: 8px 20px;
+  border: 1.5px solid #E0E2E7;
+  border-radius: 8px;
+  background: #fff;
+  color: #1A1C21;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.buyBtn {
+  padding: 8px 24px;
+  background: #5570F1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.buyBtn:hover { background: #4460E0; }
+.buyBtn:disabled { opacity: 0.6; }
+.buyBtnSmall {
+  padding: 6px 16px;
+  background: #2B2F42;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.buyBtnSmall:hover {
+  background: #5570F1;
+}
+
+/* Add Product Page */
+.addProductPage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #8B8D97;
+}
+
+.breadcrumb a {
+  color: #5570F1;
+  font-weight: 600;
+}
+
+.formCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.imageUpload {
+  border: 2px dashed #E0E2E7;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  margin-bottom: 20px;
+}
+
+.imageUpload:hover {
+  border-color: #5570F1;
+}
+
+.imageUpload p {
+  color: #8B8D97;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.imageUpload span {
+  color: #5570F1;
+  font-weight: 600;
+}
+
+.previewImg {
+  max-width: 200px;
+  max-height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.formActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.discardBtn {
+  padding: 10px 24px;
+  border: 1.5px solid #E0E2E7;
+  border-radius: 8px;
+  background: #fff;
+  color: #1A1C21;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.saveBtn {
+  padding: 10px 24px;
+  background: #1A1C21;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.saveBtn:hover { background: #2E3035; }
+.saveBtn:disabled { opacity: 0.6; }
+
+.csvSection {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.csvBtn {
+  padding: 10px 20px;
+  border: 1.5px solid #5570F1;
+  border-radius: 8px;
+  color: #5570F1;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.csvBtn:hover {
+  background: #5570F1;
+  color: #fff;
+}
+
+.csvBtn.active {
+  background: #5570F1;
+  color: #fff;
+}
+
+.csvUploadArea {
+  border: 2px dashed #E0E2E7;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.csvUploadArea:hover { border-color: #5570F1; }
+
+@media (max-width: 768px) {
+  .formGrid { grid-template-columns: 1fr; }
+  .topBar { flex-direction: column; align-items: stretch; }
+  .searchBox { max-width: none; }
+}
+
+/* Overall Inventory */
+.inventorySection {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.inventoryTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #383A47;
+  margin-bottom: 24px;
+}
+
+.inventoryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.invCard {
+  border-right: 1.5px solid #F0F1F3;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+.invCard:first-child {
+  padding-left: 0;
+}
+
+.invHeader {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A1C21;
+  margin-bottom: 16px;
+}
+
+.invContent {
+  display: flex;
+  gap: 32px;
+}
+
+.invCol {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.invVal {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.invSub {
+  font-size: 13px;
+  color: #B5B7C0;
+}
+
+/* Table Header Section */
+.tableHeaderSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1.5px solid #F0F1F3;
+}
+
+.tableTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #383A47;
+}
+
+.tableHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.addBtn {
+  background: #2B2F42;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.addBtn:hover {
+  background: #1A1C21;
+}
+
+.pageText {
+  font-size: 13px;
+  color: #8B8D97;
+}
+
+.pageBtnWord {
+  font-size: 13px;
+  color: #1A1C21;
+  border: 1px solid #E0E2E7;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* Choice Modal */
+.choiceModal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.choiceBtn {
+  background: #2B2F42;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 32px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+/* CSV Upload Modal */
+.csvModalOverlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 300;
+}
+
+.csvModalCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 500px;
+  border: 2px solid #5570F1;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+}
+
+.csvModalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.csvModalHeader h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A1C21;
+}
+
+.closeX {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #1A1C21;
+}
+
+.csvSubtext {
+  font-size: 13px;
+  color: #8B8D97;
+  margin-bottom: 24px;
+}
+
+.csvDragArea {
+  border: 1.5px dashed #5570F1;
+  border-radius: 8px;
+  padding: 32px 24px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.csvUploadIcon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.csvDragText {
+  font-size: 14px;
+  color: #1A1C21;
+  font-weight: 500;
+}
+
+.csvOrLine {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 16px 0;
+}
+.csvOrLine::before, .csvOrLine::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #E0E2E7;
+}
+.csvOrLine span {
+  padding: 0 10px;
+  font-size: 12px;
+  color: #8B8D97;
+}
+
+.browseFileBtn {
+  background: #fff;
+  border: 1.5px solid #1A1C21;
+  color: #1A1C21;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.csvModalFooter {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.csvCancelBtn {
+  background: #fff;
+  border: 1px solid #E0E2E7;
+  padding: 8px 24px;
+  border-radius: 6px;
+  color: #8B8D97;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.csvNextBtn {
+  background: #020C1B;
+  color: #fff;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Add Product UI Adjustments */
+.imageUploadSquare {
+  width: 100px;
+  height: 100px;
+  border: 1.5px dashed #B5B7C0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  background: #FAFAFC;
+  transition: border-color 0.2s;
+}
+
+.imageUploadSquare:hover {
+  border-color: #5570F1;
+}
+
+.discardPlainBtn {
+  background: transparent;
+  color: #8B8D97;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 10px 24px;
+}
+
+.discardPlainBtn:hover {
+  color: #383A47;
+}
+
+.rowFormGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.rowFormGroup label {
+  width: 180px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #383A47;
+}
+
+.rowFormGroup input {
+  width: 480px;
+  max-width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #E0E2E7;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  outline: none;
+  color: #1A1C21;
+}
+
+.rowFormGroup input::placeholder {
+  color: #B5B7C0;
+}
+
+.rowFormGroup input:focus {
+  border-color: #5570F1;
+}
+
+@media (max-width: 1024px) {
+  .inventoryGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .invCard { border-right: none; padding-right: 0; padding-left: 0; }
+}
+
+@media (max-width: 768px) {
+  .inventorySection {
+    padding: 16px;
+  }
+  
+  .inventoryGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .tableContainer {
+    overflow-x: auto;
+  }
+  
+  .tableTitle {
+    font-size: 16px;
+  }
+  
+  .tableHeaderSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .tableHeaderRight {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .rowFormGroup {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .rowFormGroup label {
+    width: 100%;
+  }
+  
+  .rowFormGroup input {
+    width: 100%;
+  }
+
+  .csvSection {
+    flex-direction: column;
+  }
+
+  .modal {
+    padding: 20px;
+  }
+  
+  .csvModalCard {
+    width: 90%;
+    padding: 16px;
+  }
+}
+
