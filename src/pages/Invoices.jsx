@@ -1,10 +1,13 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import API from '../services/api';
 import styles from './Invoices.module.css';
 
 const Invoices = () => {
   const [invoices, setInvoices] = useState([]);
   const [stats, setStats] = useState({});
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get('search') || '';
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -18,7 +21,7 @@ const Invoices = () => {
     try {
       setLoading(true);
       const [listRes, statsRes] = await Promise.all([
-        API.get(`/invoices?page=${page}&limit=10`),
+        API.get(`/invoices?page=${page}&limit=10&search=${search}`),
         API.get('/invoices/stats')
       ]);
       setInvoices(listRes.data.invoices);
@@ -29,9 +32,11 @@ const Invoices = () => {
     } finally {
       setLoading(false);
     }
-  }, [page]);
+  }, [page, search]);
 
   useEffect(() => { fetchData(); }, [fetchData]);
+
+  useEffect(() => { setPage(1); }, [search]);
 
   const handleStatusChange = async (id, status) => {
     try {

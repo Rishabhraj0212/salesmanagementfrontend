@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import API from '../services/api';
 import styles from './Products.module.css';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const [search, setSearch] = useState('');
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get('search') || '';
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
@@ -156,9 +157,6 @@ const Products = () => {
             <button className={styles.addBtn} onClick={() => setShowAddMenu(true)}>
               Add Product
             </button>
-            <div className={styles.searchFilterGroup}>
-               {/* Filters can go here if needed in future */}
-            </div>
           </div>
         </div>
         <table className={styles.table}>

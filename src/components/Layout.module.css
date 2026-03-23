@@ -60,6 +60,35 @@
   color: #BEC0CA;
 }
 
+.searchBox {
+  display: flex;
+  align-items: center;
+  background: #50556F;
+  border-radius: 20px;
+  padding: 8px 16px;
+  width: 320px;
+}
+
+.searchIcon {
+  color: #BEC0CA;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: #BEC0CA;
+}
+
 .content {
   flex: 1;
   padding: 24px 32px;

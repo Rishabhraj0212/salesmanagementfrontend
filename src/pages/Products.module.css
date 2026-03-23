@@ -55,6 +55,42 @@
   background: #4460E0;
 }
 
+.searchFilterGroup {
+  display: flex;
+  align-items: center;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  background: #F9F9FC;
+  border: 1px solid #E0E2E7;
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 240px;
+}
+
+.searchIcon {
+  color: #BEC0CA;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  color: #1A1C21;
+  font-size: 13px;
+  width: 100%;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: #BEC0CA;
+}
+
+
 .tableContainer {
   background: #fff;
   border-radius: 12px;
@@ -746,7 +782,14 @@
   .tableHeaderRight {
     width: 100%;
     justify-content: space-between;
+    flex-direction: column;
+    gap: 12px;
   }
+  
+  .searchFilterGroup, .searchBox {
+    width: 100%;
+  }
+
   
   .rowFormGroup {
     flex-direction: column;
