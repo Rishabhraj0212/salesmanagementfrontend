@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import API from '../services/api';
-import illustration from '../assets/reset_password_illustration.png';
+import illustration from '../assets/forgot_password_illustration.png';
 import styles from './Auth.module.css';
 
 const ResetPassword = () => {
@@ -36,17 +36,21 @@ const ResetPassword = () => {
   return (
     <div className={styles.authContainer}>
       <div className={styles.authLeft}>
-        <h1>Reset Password</h1>
-        <p className={styles.subtitle}>Enter your new password below</p>
+        <h1>Create New Password</h1>
+        <p className={styles.subtitle}>
+          Today is a new day. It's your day. You shape it.
+          <br />
+          Sign in to start managing your projects.
+        </p>
 
         {error && <div className={styles.errorMsg}>{error}</div>}
         {success && <div className={styles.successMsg}>{success}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
-            <label>New Password</label>
+            <label>Enter New Password</label>
             <div className={styles.passwordWrapper}>
-              <input type={showPassword ? 'text' : 'password'} placeholder="Enter new password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
+              <input type={showPassword ? 'text' : 'password'} placeholder="at least 8 characters" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={8} />
               <button 
                 type="button" 
                 className={styles.eyeBtn}
@@ -67,10 +71,13 @@ const ResetPassword = () => {
             </div>
           </div>
           <div className={styles.formGroup}>
-            <label>Confirm New Password</label>
+            <label>Confirm Password</label>
             <div className={styles.passwordWrapper}>
-              <input type={showPassword ? 'text' : 'password'} placeholder="Confirm new password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required minLength={6} />
+              <input type={showPassword ? 'text' : 'password'} placeholder="at least 8 characters" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required minLength={8} />
             </div>
+          </div>
+          <div className={styles.forgotLink}>
+            <Link to="/forgot-password">Forgot Password?</Link>
           </div>
           <button type="submit" className={styles.submitBtn} disabled={loading}>
             {loading ? 'Resetting...' : 'Reset Password'}
@@ -82,8 +89,6 @@ const ResetPassword = () => {
       </div>
       <div className={styles.authRight}>
         <img src={illustration} alt="Secure Reset Illustration" className={styles.authIllustration} />
-        <h2>Secure Reset</h2>
-        <p>Create a strong password to protect your account.</p>
       </div>
     </div>
   );

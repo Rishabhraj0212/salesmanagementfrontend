@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import API from '../services/api';
-import illustration from '../assets/signup_illustration.png';
+import illustration from '../assets/Frame 1948754811.png';
+import logo from '../assets/Frame.png';
 import styles from './Auth.module.css';
 
 const Signup = () => {
-  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', password: '', confirmPassword: '' });
+  const [form, setForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -40,33 +41,27 @@ const Signup = () => {
   return (
     <div className={styles.authContainer}>
       <div className={styles.authLeft}>
-        <h1>Create an Account</h1>
-        <p className={styles.subtitle}>Create an account to continue</p>
+        <h1>Create an account</h1>
+        <p className={styles.subtitle}>Start inventory management.</p>
 
         {error && <div className={styles.errorMsg}>{error}</div>}
         {success && <div className={styles.successMsg}>{success}</div>}
 
         <form onSubmit={handleSubmit}>
-          <div className={styles.formRow}>
-            <div className={styles.formGroup}>
-              <label>First Name</label>
-              <input type="text" name="firstName" placeholder="John" value={form.firstName} onChange={handleChange} required />
-            </div>
-            <div className={styles.formGroup}>
-              <label>Last Name</label>
-              <input type="text" name="lastName" placeholder="Doe" value={form.lastName} onChange={handleChange} />
-            </div>
+          <div className={styles.formGroup}>
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
           </div>
           <div className={styles.formGroup}>
             <label>Email</label>
-            <input type="email" name="email" placeholder="john@example.com" value={form.email} onChange={handleChange} required />
+            <input type="email" name="email" placeholder="Example@email.com" value={form.email} onChange={handleChange} required />
           </div>
           <div className={styles.formGroup}>
             <label>Create Password</label>
             <div className={styles.passwordWrapper}>
-              <input type={showPassword ? 'text' : 'password'} name="password" placeholder="Create a password" value={form.password} onChange={handleChange} required minLength={6} />
-              <button 
-                type="button" 
+              <input type={showPassword ? 'text' : 'password'} name="password" placeholder="at least 8 characters" value={form.password} onChange={handleChange} required minLength={8} />
+              <button
+                type="button"
                 className={styles.eyeBtn}
                 onClick={() => setShowPassword(!showPassword)}
               >
@@ -87,7 +82,7 @@ const Signup = () => {
           <div className={styles.formGroup}>
             <label>Confirm Password</label>
             <div className={styles.passwordWrapper}>
-              <input type={showPassword ? 'text' : 'password'} name="confirmPassword" placeholder="Confirm your password" value={form.confirmPassword} onChange={handleChange} required minLength={6} />
+              <input type={showPassword ? 'text' : 'password'} name="confirmPassword" placeholder="at least 8 characters" value={form.confirmPassword} onChange={handleChange} required minLength={8} />
             </div>
           </div>
           <button type="submit" className={styles.submitBtn} disabled={loading}>
@@ -99,10 +94,17 @@ const Signup = () => {
         </p>
       </div>
       <div className={styles.authRight}>
-        <img src={illustration} alt="Inventory Illustration" className={styles.authIllustration} />
-        <h2>Welcome to</h2>
-        <h2 style={{color: '#5570F1', marginTop: '-8px'}}>Inventory Management</h2>
-        <p>Manage your inventory, track sales, and grow your business with confidence.</p>
+        <div className={styles.authRightContent}>
+          <div className={styles.titleContainer}>
+            <div className={styles.titleText}>
+              <h2>Welcome to</h2>
+              <h2 className={styles.companyName}>Cuvtee</h2>
+            </div>
+            <img src={logo} alt="Cuvtee Logo" className={styles.pieIcon} />
+          </div>
+          <img src={illustration} alt="Inventory Illustration" className={styles.authIllustration} />
+          {/* <p>Manage your inventory, track sales, and grow your business with confidence.</p> */}
+        </div>
       </div>
     </div>
   );

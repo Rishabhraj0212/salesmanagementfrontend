@@ -2,6 +2,7 @@
   display: flex;
   min-height: 100vh;
   width: 100%;
+  background: #1A1C21;
 }
 
 .authLeft {
@@ -11,6 +12,8 @@
   justify-content: center;
   padding: 60px 80px;
   background: #fff;
+  border-radius: 0 40px 40px 0;
+  z-index: 2;
 }
 
 .authLeft h1 {
@@ -162,7 +165,7 @@
   right: -100px;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(85,112,241,0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(85, 112, 241, 0.15) 0%, transparent 70%);
   border-radius: 50%;
 }
 
@@ -173,16 +176,20 @@
   left: -80px;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(255,171,64,0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 171, 64, 0.1) 0%, transparent 70%);
   border-radius: 50%;
 }
 
 .authRight h2 {
   font-size: 32px;
-  font-weight: 700;
+  font-weight: 500;
   color: #fff;
-  margin-bottom: 12px;
-  z-index: 1;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.authRight .companyName {
+  font-weight: 700;
 }
 
 .authRight p {
@@ -191,14 +198,38 @@
   z-index: 1;
   text-align: center;
   max-width: 340px;
+  margin-top: 24px;
+}
+
+.authRightContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.titleText {
+  display: flex;
+  flex-direction: column;
+}
+
+.pieIcon {
+  width: 56px;
+  height: auto;
+  object-fit: contain;
 }
 
 .authIllustration {
   width: 100%;
-  max-width: 400px;
+  max-width: 440px;
   height: auto;
-  margin-bottom: 40px;
-  z-index: 1;
 }
 
 .formRow {
@@ -214,17 +245,19 @@
   .authRight {
     display: none;
   }
+
   .authLeft {
     padding: 40px 20px;
     justify-content: flex-start;
     padding-top: 60px;
   }
+
   .authLeft h1 {
     font-size: 22px;
   }
+
   .formRow {
     flex-direction: column;
     gap: 0;
   }
 }
-

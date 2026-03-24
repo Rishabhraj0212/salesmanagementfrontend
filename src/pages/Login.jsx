@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import API from '../services/api';
-import illustration from '../assets/login_illustration.png';
+import illustration from '../assets/Frame 1948754811.png';
+import logo from '../assets/Frame.png';
 import styles from './Auth.module.css';
 
 const Login = () => {
@@ -34,9 +35,9 @@ const Login = () => {
       <div className={styles.authLeft}>
         <h1>Log in to your Account</h1>
         <p className={styles.subtitle}>Welcome back! Select a method to log in:</p>
-        
+
         {error && <div className={styles.errorMsg}>{error}</div>}
-        
+
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
             <label>Email</label>
@@ -85,10 +86,17 @@ const Login = () => {
         </p>
       </div>
       <div className={styles.authRight}>
-        <img src={illustration} alt="Inventory Illustration" className={styles.authIllustration} />
-        <h2>Welcome to</h2>
-        <h2 style={{color: '#5570F1', marginTop: '-8px'}}>Inventory Management</h2>
-        <p>Manage your inventory, track sales, and grow your business with confidence.</p>
+        <div className={styles.authRightContent}>
+          <div className={styles.titleContainer}>
+            <div className={styles.titleText}>
+              <h2>Welcome to</h2>
+              <h2 className={styles.companyName}>Cuvtee</h2>
+            </div>
+            <img src={logo} alt="Cuvtee Logo" className={styles.pieIcon} />
+          </div>
+          <img src={illustration} alt="Inventory Illustration" className={styles.authIllustration} />
+          {/* <p>Manage your inventory, track sales, and grow your business with confidence.</p> */}
+        </div>
       </div>
     </div>
   );
