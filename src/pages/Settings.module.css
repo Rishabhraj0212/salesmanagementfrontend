@@ -112,3 +112,48 @@
   }
 }
 
+@media (max-width: 480px) {
+  .settingsPage {
+    padding: 12px;
+  }
+
+  .settingsCard {
+    padding: 16px;
+    border-radius: 8px;
+    padding-bottom: 70px;
+  }
+
+  .headerContainer {
+    margin-bottom: 20px;
+  }
+
+  .settingsCard h2 {
+    font-size: 13px;
+  }
+
+  .formGroup {
+    margin-bottom: 16px;
+  }
+
+  .formGroup label {
+    font-size: 12px;
+  }
+
+  .formGroup input {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .formActions {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    width: calc(100% - 32px);
+  }
+
+  .saveBtn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+

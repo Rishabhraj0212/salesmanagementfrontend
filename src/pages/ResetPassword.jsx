@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import API from '../services/api';
 import illustration from '../assets/forgot_password_illustration.png';
 import styles from './Auth.module.css';
 
 const ResetPassword = () => {
-  const { token } = useParams();
+  const [email, setEmail] = useState('');
+  const [otp, setOtp] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -14,6 +15,18 @@ const ResetPassword = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Get email and OTP from localStorage
+    const storedEmail = localStorage.getItem('resetEmail');
+    const storedOTP = localStorage.getItem('resetOTP');
+    if (!storedEmail || !storedOTP) {
+      navigate('/forgot-password');
+    } else {
+      setEmail(storedEmail);
+      setOtp(storedOTP);
+    }
+  }, [navigate]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -21,10 +34,17 @@ const ResetPassword = () => {
       setError('Passwords do not match');
       return;
     }
+    if (password.length < 8) {
+      setError('Password must be at least 8 characters long');
+      return;
+    }
     setLoading(true);
     try {
-      const { data } = await API.post('/auth/reset-password', { token, password, confirmPassword });
+      const { data } = await API.post('/auth/reset-password', { email, otp, password, confirmPassword });
       setSuccess(data.message);
+      // Clear localStorage
+      localStorage.removeItem('resetEmail');
+      localStorage.removeItem('resetOTP');
       setTimeout(() => navigate('/'), 2000);
     } catch (err) {
       setError(err.response?.data?.message || 'Reset failed');
@@ -38,15 +58,25 @@ const ResetPassword = () => {
       <div className={styles.authLeft}>
         <h1>Create New Password</h1>
         <p className={styles.subtitle}>
-          Today is a new day. It's your day. You shape it.
+          Set a strong new password to secure your account.
           <br />
-          Sign in to start managing your projects.
+          Make sure it's at least 8 characters long.
         </p>
 
         {error && <div className={styles.errorMsg}>{error}</div>}
         {success && <div className={styles.successMsg}>{success}</div>}
 
         <form onSubmit={handleSubmit}>
+          <div className={styles.formGroup}>
+            <label>Email</label>
+            <input 
+              type="email" 
+              value={email} 
+              disabled 
+              style={{ backgroundColor: '#f5f5f5', cursor: 'not-allowed' }}
+            />
+          </div>
+
           <div className={styles.formGroup}>
             <label>Enter New Password</label>
             <div className={styles.passwordWrapper}>
@@ -75,9 +105,6 @@ const ResetPassword = () => {
             <div className={styles.passwordWrapper}>
               <input type={showPassword ? 'text' : 'password'} placeholder="at least 8 characters" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required minLength={8} />
             </div>
-          </div>
-          <div className={styles.forgotLink}>
-            <Link to="/forgot-password">Forgot Password?</Link>
           </div>
           <button type="submit" className={styles.submitBtn} disabled={loading}>
             {loading ? 'Resetting...' : 'Reset Password'}

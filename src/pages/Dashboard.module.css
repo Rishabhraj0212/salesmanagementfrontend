@@ -5,8 +5,35 @@
     "sales inventory"
     "purchase product"
     "chart topProducts";
-  gap: 24px;
+  gap: 16px;
   padding: 20px;
+}
+
+@media (max-width: 1200px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+      "sales"
+      "inventory"
+      "purchase"
+      "product"
+      "chart"
+      "topProducts";
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 12px;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 8px;
+    gap: 8px;
+  }
 }
 
 .card {
@@ -172,6 +199,57 @@
 
   .metricLabel {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .card {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .card h3 {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .metricsRow {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .metricItem {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .metricIcon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+
+  .metricValue {
+    font-size: 13px;
+  }
+
+  .metricLabel {
+    font-size: 11px;
+  }
+
+  .chartHeader {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .chartFilter {
+    width: 100%;
   }
 }
 

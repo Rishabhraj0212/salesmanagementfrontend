@@ -8,7 +8,6 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [resetToken, setResetToken] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -20,7 +19,8 @@ const ForgotPassword = () => {
     try {
       const { data } = await API.post('/auth/forgot-password', { email });
       setSuccess(data.message);
-      if (data.resetToken) setResetToken(data.resetToken);
+      // Store email for next step and navigate to OTP verification
+      localStorage.setItem('resetEmail', email);
       setTimeout(() => navigate('/verify-otp'), 1500);
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to send reset email');
@@ -47,12 +47,6 @@ const ForgotPassword = () => {
             {loading ? 'Sending...' : 'Send Mail'}
           </button>
         </form>
-
-        {resetToken && (
-          <div className={styles.successMsg}>
-            <strong>Dev Mode:</strong> <Link to={`/reset-password?token=${resetToken}`}>Click here to reset password</Link>
-          </div>
-        )}
 
         <p className={styles.switchText}>
           Remember your password?<Link to="/">Log in</Link>

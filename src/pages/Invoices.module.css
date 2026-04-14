@@ -1,32 +1,87 @@
 .invoicesPage {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .invoicesPage {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .invoicesPage {
+    gap: 6px;
+  }
 }
 
 .card {
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  padding: 24px;
+  padding: 14px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 12px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 10px;
+    border-radius: 8px;
+  }
 }
 
 .cardTitle {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 700;
   color: #1A1C21;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 768px) {
+  .cardTitle {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardTitle {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
 }
 
 .overallStats {
   display: flex;
   border-top: 1px solid #F0F0F3;
-  padding-top: 24px;
+  padding-top: 12px;
+  gap: 12px;
+}
+
+@media (max-width: 768px) {
+  .overallStats {
+    flex-direction: column;
+    padding-top: 10px;
+    gap: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .overallStats {
+    padding-top: 8px;
+  }
 }
 
 .statCol {
   flex: 1;
-  padding: 0 24px;
+  padding: 10px 12px;
   border-right: 1px solid #E0E2E7;
   display: flex;
   flex-direction: column;
@@ -41,53 +96,127 @@
   border-right: none;
 }
 
+@media (max-width: 768px) {
+  .statCol {
+    padding: 8px 0;
+    border-right: none;
+    border-bottom: 1px solid #F0F0F3;
+  }
+
+  .statCol:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .statCol {
+    padding: 6px 0;
+  }
+}
+
 .statHeader {
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
   color: #1A1C21;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .statHeader {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
 }
 
 .statContent {
   display: flex;
   justify-content: space-between;
+  gap: 8px;
 }
 
 .statBlock {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .statNum {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
   color: #1A1C21;
 }
 
+@media (max-width: 768px) {
+  .statNum {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .statNum {
+    font-size: 13px;
+  }
+}
+
 .statLabel {
-  font-size: 13px;
+  font-size: 11px;
   color: #8B8D97;
-  font-weight: 600;
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .statLabel {
+    font-size: 10px;
+  }
 }
 
 /* Invoices List Section */
 .listCard {
   background: #fff;
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .listCard {
+    border-radius: 8px;
+  }
+}
+
 .listHeader {
-  padding: 20px 24px;
+  padding: 14px;
   border-bottom: 1px solid #E0E2E7;
 }
 
+@media (max-width: 768px) {
+  .listHeader {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .listHeader {
+    padding: 10px;
+  }
+}
+
 .listTitle {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
-  color: #8B8D97;
+  color: #1A1C21;
+}
+
+@media (max-width: 768px) {
+  .listTitle {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .listTitle {
+    font-size: 13px;
+  }
 }
 
 .searchFilterGroup {
@@ -95,61 +224,54 @@
   align-items: center;
 }
 
-.searchBox {
-  display: flex;
-  align-items: center;
-  background: #F9F9FC;
-  border: 1px solid #E0E2E7;
-  border-radius: 8px;
-  padding: 8px 16px;
-  width: 240px;
-}
-
-.searchIcon {
-  color: #BEC0CA;
-  margin-right: 12px;
-  display: flex;
-  align-items: center;
-}
-
-.searchInput {
-  border: none;
-  background: transparent;
-  color: #1A1C21;
-  font-size: 13px;
-  width: 100%;
-  outline: none;
-}
-
-.searchInput::placeholder {
-  color: #BEC0CA;
-}
-
-
 .tableContainer {
   width: 100%;
   overflow-x: auto;
 }
 
+@media (max-width: 480px) {
+  .tableContainer {
+    overflow-x: auto;
+  }
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 500px;
+}
+
+@media (max-width: 480px) {
+  .table {
+    min-width: 450px;
+    font-size: 11px;
+  }
 }
 
 .table th {
   text-align: left;
-  padding: 16px 24px;
-  font-size: 14px;
+  padding: 10px 12px;
+  font-size: 12px;
   font-weight: 700;
-  color: #1A1C21;
-  background: #C0C4D6; 
+  color: #8B8D97;
+  background: #F0F1F3;
+  border-bottom: 1px solid #E0E2E7;
 }
 
 .table td {
-  padding: 16px 24px;
-  font-size: 13px;
+  padding: 10px 12px;
+  font-size: 12px;
   color: #1A1C21;
   border-bottom: 1px solid #F0F0F3;
+  vertical-align: middle;
+}
+
+@media (max-width: 480px) {
+  .table th,
+  .table td {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
 }
 
 .rowGray {
@@ -266,29 +388,61 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
+  padding: 12px;
   border-top: 1px solid #E0E2E7;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .pagination {
+    padding: 10px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    padding: 8px;
+    font-size: 11px;
+  }
 }
 
 .pageInfo {
-  font-size: 13px;
+  font-size: 12px;
   color: #8B8D97;
   font-weight: 500;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .pageInfo {
+    font-size: 11px;
+    flex-basis: 100%;
+  }
 }
 
 .pageBtn {
-  padding: 6px 16px;
+  padding: 6px 14px;
   border: 1px solid #E0E2E7;
   border-radius: 6px;
   background: #fff;
   color: #1A1C21;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .pageBtn:hover { background: #F5F7FA; }
 .pageBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+@media (max-width: 480px) {
+  .pageBtn {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+}
 
 /* Advanced Invoice Modal Setup */
 .modalOverlay {
@@ -687,6 +841,92 @@
     bottom: 80px;
     position: fixed;
     z-index: 300;
+  }
+}
+
+@media (max-width: 480px) {
+  .invoicesPage {
+    gap: 12px;
+  }
+
+  .card {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .cardTitle {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .statHeader {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  .statNum {
+    font-size: 18px;
+  }
+
+  .statLabel {
+    font-size: 12px;
+  }
+
+  .listHeader {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .listTitle {
+    font-size: 16px;
+  }
+
+  .searchBox {
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .actionBtn {
+    font-size: 16px;
+    padding: 2px 6px;
+  }
+
+  .modal {
+    width: 95vw;
+    max-height: 95vh;
+  }
+
+  .invoiceHeader {
+    padding: 18px;
+  }
+
+  .invoiceHeader h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .invoiceBody {
+    padding: 16px;
+  }
+
+  .sidebarItem {
+    width: 100%;
+  }
+
+  .pageInfo {
+    font-size: 12px;
+  }
+
+  .pageBtn {
+    padding: 4px 12px;
+    font-size: 12px;
   }
 }
 

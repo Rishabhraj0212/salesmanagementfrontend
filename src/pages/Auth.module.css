@@ -2,7 +2,10 @@
   display: flex;
   min-height: 100vh;
   width: 100%;
-  background: #1A1C21;
+  background: linear-gradient(135deg, #1A1C21 0%, #2B2F38 100%);
+  flex-direction: row;
+  position: relative;
+  overflow: hidden;
 }
 
 .authLeft {
@@ -10,10 +13,56 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 60px 80px;
   background: #fff;
-  border-radius: 0 40px 40px 0;
+  border-radius: 0;
   z-index: 2;
+  position: relative;
+}
+
+.authLeft > form,
+.authLeft > div {
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .authLeft {
+    padding: 50px 60px;
+  }
+
+  .authLeft::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .authContainer {
+    flex-direction: column;
+    background: linear-gradient(135deg, #1A1C21 0%, #2B2F38 100%);
+    min-height: auto;
+  }
+
+  .authLeft {
+    padding: 32px 20px 40px 20px;
+    border-radius: 24px 24px 0 0;
+    min-height: auto;
+    background: #fff;
+  }
+
+  .authLeft::after {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .authLeft {
+    padding: 24px 16px 32px 16px;
+    border-radius: 20px 20px 0 0;
+  }
 }
 
 .authLeft h1 {
@@ -21,40 +70,90 @@
   font-weight: 700;
   color: #1A1C21;
   margin-bottom: 8px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .authLeft h1 {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .authLeft h1 {
+    font-size: 22px;
+  }
 }
 
 .authLeft p.subtitle {
   font-size: 14px;
   color: #8B8D97;
   margin-bottom: 32px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .authLeft p.subtitle {
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .authLeft p.subtitle {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
 }
 
 .formGroup {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .formGroup label {
   display: block;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   color: #1A1C21;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 480px) {
+  .formGroup {
+    margin-bottom: 16px;
+  }
+
+  .formGroup label {
+    font-size: 12px;
+  }
 }
 
 .formGroup input {
   width: 100%;
-  padding: 12px 16px;
+  padding: 12px 14px;
   border: 1.5px solid #E0E2E7;
   border-radius: 8px;
   font-size: 14px;
   color: #1A1C21;
-  background: #F9F9FC;
-  transition: border-color 0.2s;
+  background: #FAFBFC;
+  transition: all 0.3s ease;
   outline: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+@media (max-width: 480px) {
+  .formGroup input {
+    padding: 10px 12px;
+    font-size: 16px;
+  }
 }
 
 .formGroup input:focus {
   border-color: #5570F1;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(85, 112, 241, 0.1);
 }
 
 .formGroup input::placeholder {
@@ -83,13 +182,28 @@
 
 .forgotLink {
   text-align: right;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .forgotLink a {
   font-size: 13px;
   color: #5570F1;
   font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.forgotLink a:hover {
+  color: #4560E0;
+}
+
+@media (max-width: 480px) {
+  .forgotLink {
+    margin-bottom: 18px;
+  }
+
+  .forgotLink a {
+    font-size: 12px;
+  }
 }
 
 .submitBtn {
@@ -101,22 +215,33 @@
   border-radius: 8px;
   font-size: 15px;
   font-weight: 700;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
   margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .submitBtn:hover {
-  background: #2E3035;
+  background: #2B2F38;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
 }
 
 .submitBtn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 480px) {
+  .submitBtn {
+    padding: 12px;
+    font-size: 14px;
+  }
 }
 
 .switchText {
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
   color: #8B8D97;
 }
 
@@ -124,6 +249,19 @@
   color: #5570F1;
   font-weight: 600;
   margin-left: 4px;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.switchText a:hover {
+  color: #4560E0;
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .switchText {
+    font-size: 12px;
+  }
 }
 
 .errorMsg {
@@ -148,36 +286,72 @@
 
 .authRight {
   flex: 1;
-  background: #1A1C21;
+  background: linear-gradient(135deg, #1A1C21 0%, #2B2F38 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 60px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 100%,
+    0% 100%,
+    0% 95%,
+    3% 90%,
+    2% 80%,
+    4% 70%,
+    1% 60%,
+    3% 50%,
+    1% 40%,
+    4% 30%,
+    2% 20%,
+    3% 10%,
+    0% 5%
+  );
 }
 
 .authRight::before {
-  content: '';
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(85, 112, 241, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
+  display: none;
 }
 
 .authRight::after {
-  content: '';
-  position: absolute;
-  bottom: -80px;
-  left: -80px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(255, 171, 64, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
+  display: none;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(30px) scale(1.05);
+  }
+}
+
+/* Additional Decorative Elements - Removed */
+.authRightContent::before {
+  display: none;
+}
+
+.authRightContent::after {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .authRight {
+    display: none !important;
+  }
+}
+
+.authRight img {
+  max-width: 90%;
+  height: auto;
+  z-index: 2;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  position: relative;
 }
 
 .authRight h2 {
@@ -186,6 +360,8 @@
   color: #fff;
   margin: 0;
   line-height: 1.2;
+  z-index: 2;
+  position: relative;
 }
 
 .authRight .companyName {
@@ -194,11 +370,13 @@
 
 .authRight p {
   font-size: 15px;
-  color: #8B8D97;
-  z-index: 1;
+  color: #BEC0CA;
+  z-index: 2;
   text-align: center;
   max-width: 340px;
   margin-top: 24px;
+  position: relative;
+  font-weight: 500;
 }
 
 .authRightContent {
@@ -206,6 +384,7 @@
   flex-direction: column;
   align-items: center;
   z-index: 1;
+  position: relative;
 }
 
 .titleContainer {
@@ -243,7 +422,7 @@
 
 @media (max-width: 768px) {
   .authRight {
-    display: none;
+    display: none !important;
   }
 
   .authLeft {
@@ -254,6 +433,8 @@
 
   .authLeft h1 {
     font-size: 22px;
+    background: none;
+    -webkit-text-fill-color: unset;
   }
 
   .formRow {
