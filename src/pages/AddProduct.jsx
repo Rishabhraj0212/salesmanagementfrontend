@@ -3,6 +3,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import API from '../services/api';
 import styles from './Products.module.css';
 
+const UNIT_OPTIONS = [
+  { value: 'kg', label: 'Kg' },
+  { value: 'pcs', label: 'Pieces' },
+  { value: 'litre', label: 'Litre' },
+  { value: 'meter', label: 'Meter' },
+  { value: 'box', label: 'Box' },
+  { value: 'pack', label: 'Pack' }
+];
+
 const AddProduct = () => {
   const [form, setForm] = useState({
     productName: '', productId: '', category: '', price: '',
@@ -96,7 +105,11 @@ const AddProduct = () => {
           </div>
           <div className={styles.rowFormGroup}>
             <label>Unit</label>
-            <input name="unit" value={form.unit} onChange={handleChange} required placeholder="Enter product unit" />
+            <select name="unit" value={form.unit} onChange={handleChange} required>
+              {UNIT_OPTIONS.map(unit => (
+                <option key={unit.value} value={unit.value}>{unit.label}</option>
+              ))}
+            </select>
           </div>
           <div className={styles.rowFormGroup}>
             <label>Expiry Date</label>

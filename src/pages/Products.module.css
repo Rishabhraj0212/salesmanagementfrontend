@@ -818,7 +818,8 @@
   color: #383A47;
 }
 
-.rowFormGroup input {
+.rowFormGroup input,
+.rowFormGroup select {
   width: 480px;
   max-width: 100%;
   padding: 12px 16px;
@@ -834,7 +835,8 @@
   color: #B5B7C0;
 }
 
-.rowFormGroup input:focus {
+.rowFormGroup input:focus,
+.rowFormGroup select:focus {
   border-color: #5570F1;
 }
 
@@ -893,7 +895,8 @@
     width: 100%;
   }
   
-  .rowFormGroup input {
+  .rowFormGroup input,
+  .rowFormGroup select {
     width: 100%;
   }
 
